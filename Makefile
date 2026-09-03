@@ -1,5 +1,5 @@
 GNAT    := gnatmake
-FLAGS   := -gnatwa -gnat2022
+FLAGS   := -gnatwa -gnata -gnat2022
 OBJ_DIR := obj
 BIN_DIR := bin
 
