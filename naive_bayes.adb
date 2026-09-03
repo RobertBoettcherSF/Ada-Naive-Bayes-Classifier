@@ -1,5 +1,3 @@
-with Ada.Numerics;
-
 package body Naive_Bayes is
 
    Pi : constant Real := 3.14159_26535_89793_23846;
