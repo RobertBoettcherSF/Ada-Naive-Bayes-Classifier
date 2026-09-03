@@ -15,12 +15,12 @@ package body Naive_Bayes is
       Num_Features : constant Positive := X'Length (2);
       Model        : Gaussian_Model (Num_Classes, Num_Features);
       
-      Class_Counts : Vector (1 .. Num_Classes) := (others => 0.0);
+      Class_Counts : Vector (1 .. Num_Classes) := [others => 0.0];
    begin
       --  Initialize arrays
-      Model.Log_Priors := (others => 0.0);
-      Model.Means      := (others => (others => 0.0));
-      Model.Variances  := (others => (others => 0.0));
+      Model.Log_Priors := [others => 0.0];
+      Model.Means      := [others => [others => 0.0]];
+      Model.Variances  := [others => [others => 0.0]];
 
       --  First pass: Calculate means and class occurrences
       for Row_Idx in X'Range (1) loop
@@ -133,12 +133,12 @@ package body Naive_Bayes is
       Num_Features : constant Positive := X'Length (2);
       Model        : Multinomial_Model (Num_Classes, Num_Features);
       
-      Feature_Counts : Matrix (1 .. Num_Classes, 1 .. Num_Features) := (others => (others => 0.0));
-      Class_Counts   : Vector (1 .. Num_Classes) := (others => 0.0);
-      Class_Totals   : Vector (1 .. Num_Classes) := (others => 0.0);
+      Feature_Counts : Matrix (1 .. Num_Classes, 1 .. Num_Features) := [others => [others => 0.0]];
+      Class_Counts   : Vector (1 .. Num_Classes) := [others => 0.0];
+      Class_Totals   : Vector (1 .. Num_Classes) := [others => 0.0];
    begin
-      Model.Log_Priors := (others => 0.0);
-      Model.Log_Probabilities := (others => (others => 0.0));
+      Model.Log_Priors := [others => 0.0];
+      Model.Log_Probabilities := [others => [others => 0.0]];
 
       --  Accumulate word/feature frequencies
       for Row_Idx in X'Range (1) loop
@@ -230,12 +230,12 @@ package body Naive_Bayes is
       Num_Features : constant Positive := X'Length (2);
       Model        : Bernoulli_Model (Num_Classes, Num_Features);
       
-      Present_Counts : Matrix (1 .. Num_Classes, 1 .. Num_Features) := (others => (others => 0.0));
-      Class_Counts   : Vector (1 .. Num_Classes) := (others => 0.0);
+      Present_Counts : Matrix (1 .. Num_Classes, 1 .. Num_Features) := [others => [others => 0.0]];
+      Class_Counts   : Vector (1 .. Num_Classes) := [others => 0.0];
    begin
-      Model.Log_Priors := (others => 0.0);
-      Model.Log_Prob_Present := (others => (others => 0.0));
-      Model.Log_Prob_Absent  := (others => (others => 0.0));
+      Model.Log_Priors := [others => 0.0];
+      Model.Log_Prob_Present := [others => [others => 0.0]];
+      Model.Log_Prob_Absent  := [others => [others => 0.0]];
 
       --  Count documents where feature is present (Value > 0)
       for Row_Idx in X'Range (1) loop
