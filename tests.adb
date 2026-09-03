@@ -211,7 +211,7 @@ begin
          Result : constant Class_ID := Predict_Multinomial (Model, Bad_Vec);
       begin
          Check ("13.2 Should not reach here", False);
-         Check ("13.3 Dummy failure", Result > 0);
+         Check ("13.3 Dummy failure", Result = 1);
       end;
    exception
       when others =>
